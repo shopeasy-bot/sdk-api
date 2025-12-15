@@ -1,0 +1,9 @@
+# build
+/lib/
+
+# dependencies
+/node_modules/
+yarn.lock
+
+# ds
+/.DS_Store

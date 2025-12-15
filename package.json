@@ -1,0 +1,67 @@
+{
+  "name": "@shopeasy/api",
+  "version": "1.0.0",
+  "description": "A NodeJS wrapper for Shop Easy API",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./lib/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.cts",
+        "default": "./lib/index.cjs"
+      }
+    }
+  },
+
+  "packageManager": "pnpm@10.25.0",
+  "scripts": {
+    "release": "pnpm build && changeset publish",
+    "build": "tsdown ./src",
+    "check-types": "tsc --noEmit",
+    "lint": "biome check --write .",
+    "lint:ci": "biome check .",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@changesets/cli": "^2.29.8",
+    "@types/node": "^24.10.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.16",
+    "tsdown": "^0.17.2",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "wrapper",
+    "shopeasy",
+    "shop easy",
+    "api",
+    "typescript",
+    "sales",
+    "bot",
+    "discord",
+    "vendas"
+  ],
+  "author": {
+    "name": "jeanbrnd",
+    "url": "https://github.com/jeanbrnd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopeasy-bot/sdk-api-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shopeasy-bot/sdk-api-js/issues"
+  },
+  "license": "MIT"
+}
