@@ -1,11 +1,14 @@
 {
   "name": "@shopeasy/api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A NodeJS wrapper for Shop Easy API",
   "type": "module",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
   "types": "./lib/index.d.mts",
+  "files": [
+    "lib"
+  ],
   "exports": {
     ".": {
       "import": {
