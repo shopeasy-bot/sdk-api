@@ -2,7 +2,7 @@
 import { ApiClient, type ApiClientOptions } from "./api";
 import { ProductsService } from "./services";
 
-export class ShopEasyApi {
+export default class ShopEasyApi {
   public products: ProductsService;
 
   private api: ApiClient;
