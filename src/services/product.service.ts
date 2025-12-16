@@ -1,5 +1,5 @@
 import type { ApiClient } from "../api";
-import type { CreateProductPayload, Product } from "../types/product";
+import type { CreateProductPayload, Product } from "../types/index";
 
 export class ProductsService {
   constructor(private api: ApiClient) {}

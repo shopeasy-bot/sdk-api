@@ -1,21 +1,28 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "module": "commonjs",
-    "rootDir": "./src",
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "./lib",
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "exclude": ["./test/", "./lib/", "tsdown.config.ts"]
+    "skipDefaultLibCheck": true,
+    "isolatedModules": true,
+    "strict": true,
+    
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": false,
+    "noEmit": true,
+    
+    "lib": ["ESNext", "DOM"],
+    
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "moduleDetection": "force",
+    "ignoreDeprecations": "6.0"
+  }
 }

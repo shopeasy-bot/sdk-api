@@ -1,10 +1,14 @@
 export interface ApiClientOptions {
-  baseUrl: string;
+  baseUrl?: string;
   token?: string;
 }
 
 export class ApiClient {
-  constructor(private options: ApiClientOptions) {}
+  private baseUrl: string;
+  
+  constructor(private options: ApiClientOptions = {}) {
+      this.baseUrl = options.baseUrl?.trim() ? options.baseUrl : "https://api.shopeasy.site";
+  }
 
   private get headers() {
     return {
@@ -16,7 +20,7 @@ export class ApiClient {
   }
 
   async request<T>(path: string, options?: RequestInit): Promise<T> {
-    const response = await fetch(`${this.options.baseUrl}${path}`, {
+    const response = await fetch(`${this.baseUrl}${path}`, {
       ...options,
       headers: {
         ...this.headers,

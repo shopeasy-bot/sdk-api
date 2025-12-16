@@ -1,8 +1,7 @@
-// src/index.ts
 import { ApiClient, type ApiClientOptions } from "./api";
 import { ProductsService } from "./services";
 
-export default class ShopEasyApi {
+export class ShopEasyApi {
   public products: ProductsService;
 
   private api: ApiClient;

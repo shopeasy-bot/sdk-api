@@ -1,43 +1,11 @@
 {
   "name": "@shopeasy/api",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "A NodeJS wrapper for Shop Easy API",
+  "license": "MIT",
   "type": "module",
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.mjs",
-  "types": "./lib/index.d.mts",
-  "files": [
-    "lib"
-  ],
-  "exports": {
-      ".": {
-    "types": "./lib/index.d.mts",
-    "import": "./lib/index.mjs",
-    "require": "./lib/index.cjs"
-  }
-  },
-
-  "packageManager": "pnpm@10.25.0",
-  "scripts": {
-    "release": "pnpm build && changeset publish",
-    "build": "tsdown ./src",
-    "check-types": "tsc --noEmit",
-    "lint": "biome check --write .",
-    "lint:ci": "biome check .",
-    "test": "node --test test/*.test.js"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.8",
-    "@changesets/cli": "^2.29.8",
-    "@types/node": "^24.10.2",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "tsc-alias": "^1.8.16",
-    "tsdown": "^0.17.2",
-    "typescript": "^5.9.3"
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "wrapper",
@@ -61,5 +29,28 @@
   "bugs": {
     "url": "https://github.com/shopeasy-bot/sdk-api-js/issues"
   },
-  "license": "MIT"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "tsx --env-file=.env playground/index.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "unbuild": "^2.0.0",
+    "vite-tsconfig-paths": "^5.1.0",
+    "vitest": "^2.1.4"
+  }
 }
