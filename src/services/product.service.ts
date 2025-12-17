@@ -1,27 +1,48 @@
-import type { ApiClient } from "../api";
-import type { CreateProductPayload, Product } from "../types/index";
+import { ApiClient } from "../api";
+import type { Product } from "../types/product.types";
 
-export class ProductsService {
-  constructor(private api: ApiClient) {}
+export class ProductService {
+  constructor(private client: ApiClient) {}
 
-  getById(guildId: string, id: string) {
-    return this.api.get<Product>(`/guilds/${guildId}/products/${id}`);
-  }
-
-  create(guildId: string, payload: CreateProductPayload) {
-    return this.api.post<Product>(`/guilds/${guildId}/products`, payload);
-  }
-
-  update(guildId: string, id: string, payload: Partial<CreateProductPayload>) {
-    return this.api.patch<Product>(
-      `/guilds/${guildId}/products/${id}`,
-      payload,
+  create(
+    guildId: string,
+    data: Omit<Product, "id" | "createdAt" | "updatedAt">
+  ): Promise<Product> {
+    return this.client.post<Product>(
+      `/guilds/${guildId}/products`,
+      data
     );
   }
 
-  delete(guildId: string, id: string) {
-    return this.api.delete<{ success: boolean }>(
+  list(guildId: string): Promise<Product[]> {
+    return this.client.get<Product[]>(
+      `/guilds/${guildId}/products`
+    );
+  }
+
+  getById(guildId: string, id: string): Promise<Product> {
+    return this.client.get<Product>(
+      `/guilds/${guildId}/products/${id}`
+    );
+  }
+
+  update(
+    guildId: string,
+    id: string,
+    data: Partial<Omit<Product, "id" | "reference" | "createdBy">>
+  ): Promise<Product> {
+    return this.client.patch<Product>(
       `/guilds/${guildId}/products/${id}`,
+      data
+    );
+  }
+
+  delete(
+    guildId: string,
+    id: string
+  ): Promise<Product> {
+    return this.client.delete<Product>(
+      `/guilds/${guildId}/products/${id}`
     );
   }
 }

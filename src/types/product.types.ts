@@ -1,41 +1,57 @@
-export type ProductStatus = "ACTIVED" | "DEACTIVATED" | "BANNED";
-export type StockMode = "AUTOMATIC" | "MANUAL";
+export type ProductStatus =
+  | "ACTIVED"
+  | "DEACTIVATED"
+  | "BANNED";
 
+export type StockMode =
+  | "AUTOMATIC"
+  | "MANUAL";
+
+/**
+ * Espelho de productSchema (API)
+ */
 export interface Product {
   id: string;
-  reference: string;
-  guildId: string;
-  createdBy: string;
-  status: ProductStatus;
 
-  title?: string | null;
-  description?: string | null;
-  price?: number | null;
-  discount?: number | null;
-  promotion?: boolean | null;
-  promotivoValue?: number | null;
-
-  stockMode: StockMode;
-  stockText?: string | null;
-  stockRepeat?: number | null;
-  stockCount?: number | null;
-  stockMin: number;
-  stockMax: number;
-
-  chat?: boolean | null;
-  private?: boolean | null;
-  sell?: boolean | null;
-  coupon: boolean;
-
-  createdAt?: string | null;
-  updatedAt: string;
-}
-
-export interface CreateProductPayload {
   reference: string;
   createdBy: string;
+
+  status?: ProductStatus;
+
   title?: string;
   description?: string;
-  price?: number;
-  discount?: number;
+
+  // Decimal do Prisma chega como string | number
+  price?: string | number;
+  discount?: string | number;
+
+  promotion?: boolean;
+  promotivoValue?: number;
+
+  banners?: unknown;
+  messages?: unknown;
+
+  stockMode?: StockMode;
+  stockItems?: string[];
+  stockText?: string;
+  stockRepeat?: number;
+  stockCount?: number;
+
+  instructions?: string;
+
+  stockMin?: number;
+  stockMax?: number;
+
+  usersNotifyStock?: unknown;
+
+  chat?: boolean;
+  private?: boolean;
+  deshighlight?: boolean;
+  sell?: boolean;
+
+  coupon?: boolean;
+  colorHex?: string;
+
+  createdAt?: string; // date → ISO string
+  updatedAt?: string; // date → ISO string
 }
