@@ -9,7 +9,7 @@ export type PaymentProvider =
 export interface GuildConfig {
   guildId: string;
 
-  colorHex?: string;
+  colorHex: string;
 
   channelPublic?: string;
   channelPrivate?: string;

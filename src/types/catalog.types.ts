@@ -12,6 +12,7 @@ export interface CatalogProduct {
 /**
  * Espelho de catalogSchema (API)
  */
+
 export interface Catalog {
   id: string;
 
@@ -22,8 +23,8 @@ export interface Catalog {
   title?: string;
   description?: string;
 
-  messages?: unknown;
-  banners?: unknown;
+  messages?: Array<string>;
+  banners?: Array<string>;
   color?: string;
   placeholder?: string;
 

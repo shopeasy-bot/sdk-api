@@ -22,7 +22,7 @@ export interface Product {
   description?: string;
 
   // Decimal do Prisma chega como string | number
-  price?: string | number;
+  price: string ;
   discount?: string | number;
 
   promotion?: boolean;

@@ -33,6 +33,11 @@ export class ApiClient {
       throw new Error(error?.error ?? response.statusText);
     }
 
+    // Tratamento especial para NO_CONTENT (204)
+    if (response.status === 204) {
+      return undefined as T;
+    }
+
     return response.json();
   }
 
@@ -54,7 +59,13 @@ export class ApiClient {
     });
   }
 
-  delete<T>(path: string) {
-    return this.request<T>(path, { method: "DELETE" });
+  delete<T>(path: string, body?: unknown) {
+    const options: RequestInit = { method: "DELETE" };
+    
+    if (body !== undefined) {
+      options.body = JSON.stringify(body);
+    }
+    
+    return this.request<T>(path, options);
   }
 }
