@@ -5,3 +5,4 @@ export * from "./sale.service";
 export * from "./image.service";
 export * from "./payment.service";
 export * from "./cart.service";
+export * from "./mobileDevice.service";

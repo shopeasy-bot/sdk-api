@@ -1,5 +1,5 @@
 import { ApiClient, type ApiClientOptions } from "./api";
-import { CartService, CatalogService, ConfigsService, ImageService, PaymentService, ProductService, SaleService } from "./services";
+import { CartService, CatalogService, ConfigsService, ImageService, MobileDeviceService, PaymentService, ProductService, SaleService } from "./services";
 import type { Product } from './types/product.types';
 import { GuildConfig } from './types/configs.types';
 import { Catalog } from './types/catalog.types';
@@ -19,6 +19,7 @@ export class ShopEasyApi {
   public customers: CustomerService;
   public images: ImageService;
   public payments: PaymentService;
+  public mobileDevices: MobileDeviceService;
 
   private api: ApiClient;
 
@@ -33,7 +34,7 @@ export class ShopEasyApi {
     this.customers = new CustomerService(this.api);
     this.images = new ImageService(this.api);
     this.payments = new PaymentService(this.api);
-
+    this.mobileDevices = new MobileDeviceService(this.api);
   }
 };
 

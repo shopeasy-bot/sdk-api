@@ -29,6 +29,12 @@ export class SaleService {
     );
   }
 
+  listSince(guildId: string, since: Date): Promise<Sale[]> {
+    return this.client.get<Sale[]>(
+      `/guilds/${guildId}/sales?since=${since.toISOString()}`
+    );
+  }
+
   getById(guildId: string, id: string): Promise<Sale> {
     return this.client.get<Sale>(
       `/guilds/${guildId}/sales/${id}`
