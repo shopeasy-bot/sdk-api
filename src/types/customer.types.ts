@@ -5,5 +5,4 @@ export interface Customer {
   balance: string;
   notify: boolean;
   createdAt?: Date;
-  updatedAt?: Date;
 }

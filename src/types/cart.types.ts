@@ -1,8 +1,10 @@
 import { Product } from "./product.types";
 
-export type CartStatus = "MAIN" | "COUPON" | "PAYMENT" | "APPROVED";
+export type CartStatus = "MAIN" | "COUPON" | "PAYMENT" | "APPROVED" | "PENDING_APPROVAL";
 
-export interface CartItem {
+export type PaymentMode = "PIX" | "MERCADOPAGO" | "SALDO" | "CRIPTO";
+
+export interface CartProduct {
   id: string;
   cartId: string;
   productId: string;
@@ -17,10 +19,11 @@ export interface Cart {
   userId: string;
   message: string;
   status: CartStatus;
-  items?: CartItem[];
-
+  paymentMode: PaymentMode;
+  products?: CartProduct[];
+  expireAt?: Date;
+  botClient?: string;
+  orderId?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
-
-

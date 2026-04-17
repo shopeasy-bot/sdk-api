@@ -3,9 +3,12 @@ import { Product } from "./product.types";
 export interface SaleItem {
   id: string;
   saleId: string;
-  productId: string;
-  unitPrice: string;
+  productId?: string;
+  valueTotal: string;
   quantity: number;
+  deliveryStock?: unknown;
+  deliveryPedding?: boolean;
+  deliveryPeddingAmount?: number;
   product?: Product;
 }
 
@@ -13,9 +16,9 @@ export interface Sale {
   id: string;
   userId: string;
   guildId: string;
-  total: string;
+  totalValue: string;
   feedbackStars?: number;
-  items?: SaleItem[];
+  saleProducts?: SaleItem[];
   createdAt?: Date;
 }
 

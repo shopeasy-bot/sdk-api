@@ -1,4 +1,12 @@
-export type PaymentProvider = "MERCADO_PAGO" | "STRIPE" | "PAYPAL" | "PIX" | "MANUAL";
+export type PaymentProvider =
+  | "mercadoPago"
+  | "pixsemiauto"
+  | "efibank"
+  | "wallet"
+  | "pagseguro"
+  | "asaas"
+  | "stripe"
+  | "nowpayments";
 
 export interface Payment {
   id: string;
